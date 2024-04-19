@@ -1,4 +1,4 @@
-
+import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
 from starlette.responses import FileResponse
@@ -167,3 +167,4 @@ def read_root(item:GenMusic):
         return download('midi/{}.mid'.format(filename))
     else:
         return {"fail":True}
+uvicorn.run(app="main:app",host="0.0.0.0",port=8080)
