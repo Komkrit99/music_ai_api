@@ -163,7 +163,7 @@ def read_root(item:GenMusic):
     filename = str(time.time()).replace(".","-")
     result = create_multi_midi(item,filename)
     if result:
-        # os.system(f'fluidsynth -ni {'midi/{}.mid'.format(filename)} {'midi/{}.mid'.format(filename)} -F {'midi/{}.mp3'.format(filename)} -r 44100')
+        os.system(f"fluidsynth -ni {'midi/{}.mid'.format(filename)} {'midi/{}.mid'.format(filename)} -F {'midi/{}.mp3'.format(filename)} -r 44100")
         return download('midi/{}.mid'.format(filename))
     else:
         return {"fail":True}
