@@ -1,4 +1,3 @@
-import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
 from starlette.responses import FileResponse
@@ -164,7 +163,7 @@ def read_root(item:GenMusic):
     result = create_multi_midi(item,filename)
     if result:
         os.system(f"fluidsynth -ni {'midi/{}.mid'.format(filename)} {'midi/{}.mid'.format(filename)} -F {'midi/{}.mp3'.format(filename)} -r 44100")
-        return download('midi/{}.mid'.format(filename))
+        return {"mp3File":download('midi/{}.mp3'.format(filename)),
+                "midFile":download('midi/{}.mid'.format(filename))}
     else:
         return {"fail":True}
-uvicorn.run(app="main:app",host="0.0.0.0",port=8080)
