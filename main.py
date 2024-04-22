@@ -167,3 +167,6 @@ def read_root(item:GenMusic):
                 "midFile":download('midi/{}.mid'.format(filename))}
     else:
         return {"fail":True}
+@app.get("/healthcheck")
+def healthcheck():
+    return "hello"
